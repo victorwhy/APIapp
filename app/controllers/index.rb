@@ -2,8 +2,8 @@ get '/' do
   erb :welcome
 end
 
-get '/login' do
-  
+get '/google' do
+  erb :google
 end
 
 get '/signup' do
