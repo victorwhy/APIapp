@@ -43,6 +43,12 @@ configure do
 
   # Set the views to
   set :views, File.join(Sinatra::Application.root, "app", "views")
+
+  #twitter omniauth
+  use OmniAuth::Builder do
+    provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
+  end
+  
 end
 
 # Set up the controllers and helpers
