@@ -1,3 +1,9 @@
 get '/auth/twitter/callback' do
-	binding.pry
+	session[:twitter] = {info: request.env['omniauth.auth']['info'],  credentials: request.env['omniauth.auth']['credentials'] }
+	redirect '/'
+end
+
+get '/twitter/signout' do
+	session[:twitter] = nil
+	redirect '/'
 end
