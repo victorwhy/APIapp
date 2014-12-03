@@ -1,2 +1,6 @@
 <p>Check out the <a href="google">Google APIs</a></p>
-<p>Sign into <a href="/auth/twitter">Twitter</a></p>
+<% if session[:twitter] %>
+	<%= erb :twitter, :layout => false %>
+<% else %>
+	<p>Sign into <a href="/auth/twitter">Twitter</a></p>
+<% end %>
