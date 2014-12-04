@@ -6,4 +6,12 @@
 		Description: <%=session[:twitter][:info][:description]%>
 		<img src ="<%= session[:twitter][:info][:image] %>">
 	</div>
+	<div id="twittersearch">
+		<form action="/twitter/search" method="post">
+			<input type="text" name="query" placeholder="Put search term here">
+			<input type="submit" value="Search!">
+		</form>
+	</div>
+	<div id="searcresults">
+	</div>
 </div>
