@@ -1,11 +1,9 @@
 <div id="twitter">
 	<a href="/twitter/signout"> Sign out of Twitter </a>
-	<ul>
-	<% session[:twitter][:info].each do |key, value| %>
-		<li><%= key %> -- <%= value %> </li>
-	<% end %>
-	<% session[:twitter][:credentials].each do |key, value| %>
-		<li><%= key %> -- <%= value %> </li>
-	<% end %>
-	</ul>
+	<div id="twitterprofile">
+		Nickname: <%=session[:twitter][:info][:nickname]%>
+		Name: <%=session[:twitter][:info][:name]%>
+		Description: <%=session[:twitter][:info][:description]%>
+		<img src ="<%= session[:twitter][:info][:image] %>">
+	</div>
 </div>
