@@ -1,17 +1,5 @@
-require "sinatra/json"
-
-$client = {}
-
 get '/auth/twitter/callback' do
 	session[:twitter] = {info: request.env['omniauth.auth']['info'], credentials: request.env['omniauth.auth']['credentials']}
-	$client = Twitter::REST::Client.new do |config|
-	  config.consumer_key        = ENV['TWITTER_KEY']
-	  config.consumer_secret     = ENV['TWITTER_SECRET']
-	  config.access_token        = request.env['omniauth.auth']['credentials']['token']
-	  config.access_token_secret = request.env['omniauth.auth']['credentials']['secret']
-	end
-
-	binding.pry
 	redirect '/'
 end
 
@@ -32,12 +20,19 @@ post '/twitter/search' do
 end
 
 def tweetParser(text)
-	tweet = $client.search(text, result_type: "recent").take(1)[0].to_json
-	parsedTweet = {}
-	parsedTweet[:uri] = tweet.uri.to_s
-	parsedTweet[:text] = tweet.text
-	parsedTweet[:userid] = tweet.user.id
-	parsedTweet[:screenname] = tweet.user.screen_name
-	parsedTweet[:created_at] = tweet.created_at
-	parsedTweet
+	client = Twitter::REST::Client.new do |config|
+	  config.consumer_key        = ENV['TWITTER_KEY']
+	  config.consumer_secret     = ENV['TWITTER_SECRET']
+	  config.access_token        = session[:twitter][:credentials][:token]
+	  config.access_token_secret = session[:twitter][:credentials][:secret]
+	end
+
+	tweet = client.search(text, result_type: "recent").take(1)[0]
+	# parsedTweet = {}
+	# parsedTweet[:uri] = tweet.uri.to_s
+	# parsedTweet[:text] = tweet.text
+	# parsedTweet[:userid] = tweet.user.id
+	# parsedTweet[:screenname] = tweet.user.screen_name
+	# parsedTweet[:created_at] = tweet.created_at
+	# parsedTweet
 end
