@@ -5,13 +5,13 @@ $(document).ready(function() {
   		url: $(this).attr('action'),
   		type: $(this).attr('method'),
   		data: $(this).serialize(),
-  		dataType: 'JSON'
+  		dataType: 'json'
   	})
   	.done(function(response){
   		console.log(response);
   	})
   	.fail(function(response){
-  		console.log(response);
+  		console.log('FAIL');
   	})
   })
 });
