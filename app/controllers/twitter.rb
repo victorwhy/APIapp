@@ -28,11 +28,11 @@ def tweetParser(text)
 	end
 
 	tweet = client.search(text, result_type: "recent").take(1)[0]
-	# parsedTweet = {}
-	# parsedTweet[:uri] = tweet.uri.to_s
-	# parsedTweet[:text] = tweet.text
-	# parsedTweet[:userid] = tweet.user.id
-	# parsedTweet[:screenname] = tweet.user.screen_name
-	# parsedTweet[:created_at] = tweet.created_at
-	# parsedTweet
+	parsedTweet = {}
+	parsedTweet[:uri] = tweet.uri.to_s
+	parsedTweet[:text] = tweet.text
+	parsedTweet[:userid] = tweet.user.id
+	parsedTweet[:screenname] = tweet.user.screen_name
+	parsedTweet[:created_at] = tweet.created_at
+	parsedTweet
 end
