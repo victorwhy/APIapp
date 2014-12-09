@@ -19,6 +19,7 @@ gem 'shotgun'
 gem 'dotenv'
 
 gem 'omniauth-twitter'
+# gem 'omniauth-soundcloud'
 
 gem 'pry'
 
@@ -35,3 +36,4 @@ group :test, :development do
 end
 
 gem 'twitter'
+gem 'soundcloud'
