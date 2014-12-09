@@ -4,3 +4,9 @@
 <% else %>
 	<p>Sign into <a href="/auth/twitter">Twitter</a></p>
 <% end %>
+
+<% if session[:soundcloud] %>
+	<%= erb :soundcloud, :layout => false %>
+<% else %>
+	<p>Sign into <a href="/auth/soundcloud">Soundcloud</a></p>
+<% end %>
