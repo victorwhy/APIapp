@@ -24,6 +24,23 @@ post '/soundcloud/search' do
 	soundcloudSearch(text).to_json
 end
 
+def setSoundcloudSession(access_token)
+	client = Soundcloud.new(access_token: access_token)
+	client_info = client.get('/me')
+	binding.pry
+	session[:soundcloud] = {
+		info: {
+				username: client_info['username'],
+				name: client_info['full_name'],
+				description: client_info['description'],
+				location: client_info['city'],
+				url: client_info['permalink_url'],
+				image: client_info['avatar_url']
+			},
+		credentials: access_token
+	}
+end
+
 def soundcloudSearch(text)
 	binding.pry
 	client = Soundcloud.new(client_id: session[:soundcloud][:credentials][:token])
