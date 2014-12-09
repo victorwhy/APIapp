@@ -24,14 +24,14 @@ require 'dotenv'
 Dotenv.load
 
 require 'omniauth-twitter'
-
+# require 'omniauth-soundcloud'
 require 'pry'
 
 require 'net/http'
 
 require 'twitter'
 
-require 'json'
+require 'soundcloud'
 
 
 # Some helper constants for path-centric logic
