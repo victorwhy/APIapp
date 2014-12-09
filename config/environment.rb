@@ -53,7 +53,6 @@ configure do
   #twitter omniauth
   use OmniAuth::Builder do
     provider :twitter, ENV['TWITTER_KEY'], ENV['TWITTER_SECRET']
-    provider :soundcloud, ENV['SOUNDCLOUD_KEY'], ENV['SOUNDCLOUD_SECRET'], :scope => 'non-expiring'
   end
   
 end
