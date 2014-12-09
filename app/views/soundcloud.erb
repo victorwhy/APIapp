@@ -1,0 +1,18 @@
+<div id="soundcloud">
+	<a href="/soundcloud/signout"> Sign out of Soundcloud </a>
+	<div id="soundcloudprofile">
+		Nickname: <%=session[:soundcloud][:info][:nickname]%>
+		Name: <%=session[:soundcloud][:info][:name]%>
+		Description: <%=session[:soundcloud][:info][:description]%>
+		Location: <%=session[:soundcloud][:info][:location]%>
+		<img src ="<%= session[:soundcloud][:info][:image] %>">
+	</div>
+	<div id="soundcloudsearch">
+		<form action="/soundcloud/search" method="post">
+			<input type="text" name="query" placeholder="Put search term here">
+			<input type="submit" value="Search!">
+		</form>
+	</div>
+	<div id="searchresults">
+	</div>
+</div>
