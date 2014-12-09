@@ -11,8 +11,7 @@ end
 post '/twitter/search' do
 	tweetarray = []
 	text = params[:query]
-	tweetSearch(text).to_json
-	
+	tweetSearch(text).to_json	
 end
 
 # maybe separate out into separate module?
