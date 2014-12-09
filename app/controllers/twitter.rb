@@ -11,15 +11,13 @@ end
 post '/twitter/search' do
 	tweetarray = []
 	text = params[:query]
-	# client.search(text, result_type: "recent").take(10).each do |tweet|
-	#   tweetarray << tweetParser(tweet)
-	# end
-	# binding.pry
-	hello = tweetParser(text).to_json
+	tweetSearch(text).to_json
 	
 end
 
-def tweetParser(text)
+# maybe separate out into separate module?
+
+def tweetSearch(text)
 	client = Twitter::REST::Client.new do |config|
 	  config.consumer_key        = ENV['TWITTER_KEY']
 	  config.consumer_secret     = ENV['TWITTER_SECRET']
@@ -27,7 +25,17 @@ def tweetParser(text)
 	  config.access_token_secret = session[:twitter][:credentials][:secret]
 	end
 
-	tweet = client.search(text, result_type: "recent").take(1)[0]
+	tweetarray = []
+
+	client.search(text, result_type: "recent").take(10).each do |tweet|
+	  tweetarray << tweetParser(tweet)
+	end
+
+	tweetarray
+
+end
+
+def tweetParser(tweet)
 	parsedTweet = {}
 	parsedTweet[:uri] = tweet.uri.to_s
 	parsedTweet[:text] = tweet.text

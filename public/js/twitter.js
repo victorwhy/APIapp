@@ -8,7 +8,8 @@ $(document).ready(function() {
   		dataType: 'json'
   	})
   	.done(function(response){
-  		console.log(response);
+      console.log(response)
+  		$("#twitter #searchresults").append(response[0]['text']);
   	})
   	.fail(function(response){
   		console.log('FAIL');
