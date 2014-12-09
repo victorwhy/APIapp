@@ -1,11 +1,15 @@
 get '/auth/soundcloud' do
-	client = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'], client_secret: ENV['SOUNDCLOUD_SECRET'], redirect_uri: ENV['SOUNDCLOUD_URI'])
+	client = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'], client_secret: ENV['SOUNDCLOUD_SECRET'], redirect_uri: ENV['SOUNDCLOUD_URI'], scope: 'non-expiring')
 	redirect client.authorize_url()
 end
 
 get '/auth/soundcloud/callback' do
-	binding.pry
-	session[:soundcloud] = {info: request.env['omniauth.auth']['info'], credentials: request.env['omniauth.auth']['credentials']}
+	client = Soundcloud.new(client_id: ENV['SOUNDCLOUD_KEY'], client_secret: ENV['SOUNDCLOUD_SECRET'], redirect_uri: ENV['SOUNDCLOUD_URI'], scope: 'non-expiring')
+	code = params[:code]
+	access_token = client.exchange_token(code: code)
+	
+	setSoundcloudSession(access_token[:access_token])
+	
 	redirect '/'
 end
 
