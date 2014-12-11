@@ -27,7 +27,6 @@ end
 def setSoundcloudSession(access_token)
 	client = Soundcloud.new(access_token: access_token)
 	client_info = client.get('/me')
-	binding.pry
 	session[:soundcloud] = {
 		info: {
 				username: client_info['username'],
@@ -43,7 +42,7 @@ end
 
 def soundcloudSearch(text)
 	binding.pry
-	client = Soundcloud.new(client_id: session[:soundcloud][:credentials][:token])
+	client = Soundcloud.new(access_token: session[:soundcloud][:credentials])
 	
 	soundcloudarray = []
 
