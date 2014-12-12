@@ -9,7 +9,9 @@ $(document).ready(function() {
   	})
   	.done(function(response){
       console.log(response)
-  		$("#twitter #searchresults").append(response[0]['text']);
+      response.forEach(function(tweet){
+        $("#twitter #searchresults").append(tweet['text']);  
+      });
   	})
   	.fail(function(response){
   		console.log('FAIL');

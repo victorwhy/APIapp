@@ -9,7 +9,10 @@ $(document).ready(function() {
   	})
   	.done(function(response){
       console.log(response)
-  		$("#soundcloud #searchresults").append(response[0]['text']);
+  		response.forEach(function(sound){
+        console.log(sound)
+        $("#soundcloud #searchresults").append(sound['permalink_url']);  
+      });
   	})
   	.fail(function(response){
   		console.log('FAIL');
