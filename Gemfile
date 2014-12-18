@@ -19,7 +19,7 @@ gem 'shotgun'
 gem 'dotenv'
 
 gem 'omniauth-twitter'
-# gem 'omniauth-soundcloud'
+gem 'omniauth-foursquare'
 
 gem 'pry'
 

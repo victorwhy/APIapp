@@ -24,7 +24,8 @@ require 'dotenv'
 Dotenv.load
 
 require 'omniauth-twitter'
-# require 'omniauth-soundcloud'
+require 'omniauth-foursquare'
+
 require 'pry'
 
 require 'net/http'
