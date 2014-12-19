@@ -1,0 +1,18 @@
+<div id="foursquare">
+	<a href="/foursquare/signout"> Sign out of foursquare </a>
+	<div id="foursquareprofile">
+		Username: <%=session[:foursquare][:info][:username]%>
+		Name: <%=session[:foursquare][:info][:name]%>
+		Description: <%=session[:foursquare][:info][:description]%>
+		Location: <%=session[:foursquare][:info][:location]%>
+		<img src ="<%= session[:foursquare][:info][:image] %>">
+	</div>
+	<div id="foursquaresearch">
+		<form action="/foursquare/search" method="post">
+			<input type="text" name="query" placeholder="Put search term here">
+			<input type="submit" value="Search!">
+		</form>
+	</div>
+	<div id="searchresults">
+	</div>
+</div>
