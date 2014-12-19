@@ -1,11 +1,11 @@
 <div id="foursquare">
 	<a href="/foursquare/signout"> Sign out of foursquare </a>
 	<div id="foursquareprofile">
-		Username: <%=session[:foursquare][:info][:username]%>
+		Email: <%=session[:foursquare][:info][:email]%>
 		Name: <%=session[:foursquare][:info][:name]%>
 		Description: <%=session[:foursquare][:info][:description]%>
 		Location: <%=session[:foursquare][:info][:location]%>
-		<img src ="<%= session[:foursquare][:info][:image] %>">
+		<img src ="<%= session[:foursquare][:info][:image][:prefix]%>128x128<%= session[:foursquare][:info][:image][:suffix] %>">
 	</div>
 	<div id="foursquaresearch">
 		<form action="/foursquare/search" method="post">
