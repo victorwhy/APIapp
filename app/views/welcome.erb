@@ -10,3 +10,9 @@
 <% else %>
 	<p>Sign into <a href="/auth/soundcloud">Soundcloud</a></p>
 <% end %>
+
+<% if session[:foursquare] %>
+	<%= erb :foursquare, :layout => false %>
+<% else %>
+	<p>Sign into <a href="/auth/foursquare">Foursquare</a></p>
+<% end %>
